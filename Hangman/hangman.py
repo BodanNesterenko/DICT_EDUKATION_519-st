@@ -13,13 +13,46 @@ def word_selection():
 
 
 def game(word):
-    under = "_" * len(word[3:])
-    print(word[:3] + under)
-    guessed_word = input("Guess the word:>").lower()
-    if guessed_word == word:
-        print("You guess the word,", guessed_word, "\n You survived")
+    under = "_" * len(word)
+    guessed = False
+    tries = 8
+    guessed_letters = []
+    guessed_words = []
+    print(under)
+    print("Tries=", tries)
+    print("\n")
+    while not guessed and tries > 0:
+        guess = input("Guess the word:>").lower()
+        if len(guess) == 1:
+            if guess in guessed_letters:
+                print("You guess the latter", guess)
+                tries -= 1
+            if guess in guessed_letters:
+                print("You already guess the letter")
+                tries -= 1
+            elif guess not in word:
+                print(guess, "Not in the word,try again")
+                tries -= 1
+                guessed_letters.append(guess)
+            else:
+                print(guess, "Is in the word")
+                guessed_letters.append(guess)
+                word_as_list = list(under)
+                indices = [i for i, letter in enumerate(word) if letter == guess]
+                for index in indices:
+                    word_as_list[index] = guess
+                under = "".join(word_as_list)
+                if "_" not in under:
+                    guessed = True
+
+        print("HANGMAN")
+        print("Tries=", tries)
+        print(under)
+        print("\n")
+    if guessed:
+        print("Congratulation, you guessed the word! You win!")
     else:
-        print("You lose, try again")
+        print("You lose. The word is", word)
 
 
 def main():
