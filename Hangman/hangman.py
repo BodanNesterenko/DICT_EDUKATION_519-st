@@ -23,13 +23,12 @@ def game(word):
     print("\n")
     while not guessed and tries > 0:
         guess = input("Guess the word:>").lower()
-        if len(guess) == 1:
+        if len(guess) == 1 and guess.isalpha():
             if guess in guessed_letters:
                 print("You guess the latter", guess)
                 tries -= 1
             if guess in guessed_letters:
-                print("no improvements")
-                tries -= 1
+                print("You already guess this letter")
             elif guess not in word:
                 print("That letter doesn't appear in the word")
                 tries -= 1
@@ -44,6 +43,20 @@ def game(word):
                 under = "".join(word_as_list)
                 if "_" not in under:
                     guessed = True
+        elif len(guess) != 1:
+            print("Input single letter")
+        elif len(guess) == len(word) and guess.isalpha():
+            if guess in guessed_words:
+                print("You already guessed the word", guess)
+            elif guess != word:
+                print(guess, "Is not the word")
+                tries -= 1
+                guessed_words.append(guess)
+            else:
+                guessed = True
+                under = word
+        else:
+            print("Not a valid guess, print a letter")
 
         print("HANGMAN")
         print("Tries=", tries)
