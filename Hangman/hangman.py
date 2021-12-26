@@ -28,10 +28,10 @@ def game(word):
                 print("You guess the latter", guess)
                 tries -= 1
             if guess in guessed_letters:
-                print("You already guess the letter")
+                print("no improvements")
                 tries -= 1
             elif guess not in word:
-                print(guess, "Not in the word,try again")
+                print("That letter doesn't appear in the word")
                 tries -= 1
                 guessed_letters.append(guess)
             else:
