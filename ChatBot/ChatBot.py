@@ -21,3 +21,21 @@ while x <= y:
     print(x, "!")
     x = x + 1
 print("Completed, have a nice day!")
+
+print("Lets test your knowlege")
+line_q1 = """
+1.Kirill
+2.Yaroslav
+3.Vlad
+4.Bogdan
+"""
+print("what is my name?", line_q1)
+ansv = int(input("Input number of answer >"))
+while True:
+    if ansv == 4:
+        print("Sucsess!!!")
+        break
+    else:
+        print("Try again")
+        ansv = int(input("Input number of answer >"))
+print("Congratulation!!! Have a nice day")
