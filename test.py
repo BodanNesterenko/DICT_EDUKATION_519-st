@@ -1,1 +1,1 @@
-print("python")
+print("DICT python education")
