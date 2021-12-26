@@ -74,4 +74,16 @@ def main():
     game(word)
 
 
-main()
+def main_menu():
+    print("HANGMAN")
+    print("-play\n-exit")
+    play = input(">")
+    if play == "play":
+        main()
+    elif play == "exit":
+        exit()
+    else:
+        return main_menu()
+
+
+main_menu()
